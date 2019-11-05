@@ -9,18 +9,24 @@ def merge(esq, dire):
         else:
             result.append(dire[dire_i])
             dire_i += 1
-    
+
     result += esq[esq_i:]
     result += dire[dire_i:]
     return result
 
+
 def merge_sort(lista):
-    if len(lista) <=1:
+    if len(lista) <= 1:
         return lista
     metade = len(lista)//2
     esq = merge_sort(lista[:metade])
     dire = merge_sort(lista[metade:])
-    
+
     return merge(esq, dire)
 
-merge_sort([int(x) for x in input().split()])
+
+print("Insira os números para executarmos o merge sort:\n")
+
+ordered_array = merge_sort([int(x) for x in input().split()])
+
+print("Seu array ordenado é: {}".format(ordered_array))
